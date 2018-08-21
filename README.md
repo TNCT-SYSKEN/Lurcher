@@ -20,3 +20,11 @@
 ``` bash
 ~/Lurcher$ npm install
 ```
+
+### 3. 開発を始める
+
+``` bash
+~/Lurcher$ npm run dev
+```
+
+※開発が終わるまで閉じないこと
