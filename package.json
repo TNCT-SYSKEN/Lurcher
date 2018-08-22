@@ -1,0 +1,32 @@
+{
+  "name": "lurcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "run-s sass-compile watch",
+    "sass-compile": "node-sass src/styles/ --output static/styles/",
+    "watch": "run-p watch:* watch:copy:*",
+    "watch:copy:images": "cpx \"src/images/**/\" static/images/ -w",
+    "watch:copy:scripts": "cpx \"src/scripts/**/\" static/scripts/ -w",
+    "watch:sass-compile": "node-sass src/styles/ --output static/styles/ -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TNCT-SYSKEN/Lurcher.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TNCT-SYSKEN/Lurcher/issues"
+  },
+  "homepage": "https://github.com/TNCT-SYSKEN/Lurcher#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "cpx": "^1.5.0",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.3",
+    "npm-run-all": "^4.1.3",
+    "popper.js": "^1.14.4"
+  }
+}
