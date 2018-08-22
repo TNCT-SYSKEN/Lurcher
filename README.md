@@ -27,4 +27,10 @@
 ~/Lurcher$ npm run dev
 ```
 
+上記と並列して以下も実行する
+
+``` bash
+~/Lurcher$ python3 manage.py runserver
+```
+
 ※開発が終わるまで閉じないこと
