@@ -43,3 +43,43 @@ $ cd Lurcher
 ```
 
 ※開発が終わるまで閉じないこと
+
+## プロジェクトについて
+
+### ディレクトリ構造
+
+```
+Lurcher
+├── README.md
+├── db.sqlite3
+├── lurcher
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── node_modules
+│   ├── abbrev
+│   ├── ajv
+│   ├── ...
+├── package-lock.json
+├── package.json
+├── requirements.txt
+├── src
+│   ├── images
+│   ├── scripts
+│   └── styles
+└── static
+    └── styles
+```
+
+`npm run dev` を実行すると `src` ディレクトリ以下がコンパイル、またはコピーされて `static` ディレクトリに配置されます。
+
+### 開発者の扱う範囲
+
+開発者が主に扱うディレクトリは
+
+- `lurcher` … Django関連のディレクトリ
+- `src` … 静的ファイル（Image, JavaScript, CSS or SCSS）のソースディレクトリ
+
+の2つです
