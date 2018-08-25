@@ -87,3 +87,16 @@ Lurcher
 ### 基本的な開発の流れ
 
 `lurcher` ディレクトリ内でHTMLテンプレートやテンプレートを表示するためのURLルーティングを記述し、HTMLテンプレート内で `static` ディレクトリに出力された静的ファイルを適宜参照しながら開発する流れとなります。
+
+### 使用可能な補助技術
+
+- Djangp
+  * Webフレームワークの一種
+  * [https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/django/](https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/django/)
+
+- Sass(SCSS)
+  * CSSをよりプログラミングに近い形で記述することを可能にした言語
+
+- Bootstrap4
+  * CSSフレームワークの一種
+  * Bootstrapが提供するCSSをHTMLのクラスに適用するだけで、デザインが可能となる
