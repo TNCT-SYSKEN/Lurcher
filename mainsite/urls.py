@@ -4,9 +4,6 @@ from . import views
 app_name = 'lurcher'
 
 urlpatterns = [
-<<<<<<< Updated upstream
-]
-=======
     path('create', views.create, name = 'create'),
     #createは使ってません
     path('offcreate',views.add, name='add'),
@@ -14,4 +11,7 @@ urlpatterns = [
     #home/でviewsの中のhomeという関数を呼び出し、
     #ホームのページに戻そうと思っているので調整をお願いします
 ]
->>>>>>> Stashed changes
+=======
+    path('create', views.create, name = 'create')
+]
+>>>>>>> [add] mainsiteアプリのcreateビューまでのルーティングを設定

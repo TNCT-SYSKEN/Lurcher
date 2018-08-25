@@ -2,12 +2,8 @@ from django.shortcuts import render
 from .forms import PageCreateForm
 
 # Create your views here.
-<<<<<<< Updated upstream
-=======
-def create(request) :
-        return render(request, 'mainsite/add.html')
 
-def add(request):
+def add(request):#オフ会作成ページ
     form = PageCreateForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         form.save()
@@ -21,4 +17,7 @@ def add(request):
 def home(request):
     #指定ファイルの名前は調整してください
     return render(request,'ofukai_create.html')
->>>>>>> Stashed changes
+=======
+def create(request) :
+    return render(request, 'mainsite/create.html')
+>>>>>>> [add] mainsiteアプリのcreateビューまでのルーティングを設定
