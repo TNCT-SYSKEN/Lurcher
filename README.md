@@ -14,7 +14,7 @@
 ### 1. リポジトリをクローン
 
 ``` bash
-git clone git@github.com:TNCT-SYSKEN/Lurcher.git
+$ git clone git@github.com:TNCT-SYSKEN/Lurcher.git
 ```
 
 ### 2. Python3の依存関係をインストール
@@ -90,7 +90,7 @@ Lurcher
 
 ### 使用可能な補助技術
 
-- Djangp
+- Django
   * Webフレームワークの一種
   * [https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/django/](https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/django/)
 
