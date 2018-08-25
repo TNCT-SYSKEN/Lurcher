@@ -57,6 +57,10 @@ Lurcher
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
+├── mainsite
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── ...
 ├── manage.py
 ├── node_modules
 │   ├── abbrev
@@ -79,10 +83,11 @@ Lurcher
 
 開発者が主に扱うディレクトリは
 
-- `lurcher` … Django関連のディレクトリ
+- `lurcher` … Djangoの実際のPythonパッケージ
+- `mainsite` … Djangoのmainsiteアプリケーションディレクトリ
 - `src` … 静的ファイル（Image, JavaScript, CSS or SCSS）のソースディレクトリ
 
-の2つです
+の3つです
 
 ### 基本的な開発の流れ
 
