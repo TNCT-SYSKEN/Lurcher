@@ -14,7 +14,7 @@
 ### 1. リポジトリをクローン
 
 ``` bash
-git clone git@github.com:TNCT-SYSKEN/Lurcher.git
+$ git clone git@github.com:TNCT-SYSKEN/Lurcher.git
 ```
 
 ### 2. Python3の依存関係をインストール
@@ -43,3 +43,60 @@ $ cd Lurcher
 ```
 
 ※開発が終わるまで閉じないこと
+
+## プロジェクトについて
+
+### ディレクトリ構造
+
+```
+Lurcher
+├── README.md
+├── db.sqlite3
+├── lurcher
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── node_modules
+│   ├── abbrev
+│   ├── ajv
+│   ├── ...
+├── package-lock.json
+├── package.json
+├── requirements.txt
+├── src
+│   ├── images
+│   ├── scripts
+│   └── styles
+└── static
+    └── styles
+```
+
+`npm run dev` を実行すると `src` ディレクトリ以下がコンパイル、またはコピーされて `static` ディレクトリに配置されます。
+
+### 開発者の扱う範囲
+
+開発者が主に扱うディレクトリは
+
+- `lurcher` … Django関連のディレクトリ
+- `src` … 静的ファイル（Image, JavaScript, CSS or SCSS）のソースディレクトリ
+
+の2つです
+
+### 基本的な開発の流れ
+
+`lurcher` ディレクトリ内でHTMLテンプレートやテンプレートを表示するためのURLルーティングを記述し、HTMLテンプレート内で `static` ディレクトリに出力された静的ファイルを適宜参照しながら開発する流れとなります。
+
+### 使用可能な補助技術
+
+- Django
+  * Webフレームワークの一種
+  * [https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/django/](https://djangogirlsjapan.gitbooks.io/workshop_tutorialjp/django/)
+
+- Sass(SCSS)
+  * CSSをよりプログラミングに近い形で記述することを可能にした言語
+
+- Bootstrap4
+  * CSSフレームワークの一種
+  * Bootstrapが提供するCSSをHTMLのクラスに適用するだけで、デザインが可能となる
