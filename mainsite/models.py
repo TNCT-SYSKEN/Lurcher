@@ -7,3 +7,4 @@ class Account(models.Model) :
     twitter_id = PositiveBigIntegerField('ツイッターID', blank = False)
     pref = models.CharField('都道府県', max_length = 255)
     evaluation = PositiveBigIntegerField('評価数', default = 0)
+    held_count = PositiveBigIntegerField('開催数', default = 0)
