@@ -1,13 +1,8 @@
 from .base import *
 
-# この設定でMySQLの構成お願いします
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lurcher',
-        'USER': 'lurcher',
-        'PASSWORD': 'lurcher',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
