@@ -23,7 +23,7 @@ class AccountCategory(models.Model) :
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
 
     def __str__(self) :
-        return self.category
+        return str(self.account) + ': ' + str(self.category)
 
 class OfflineParty(models.Model) :
     sponsor = models.ForeignKey(Account, on_delete = models.CASCADE)
