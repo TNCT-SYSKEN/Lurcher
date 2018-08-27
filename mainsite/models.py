@@ -12,9 +12,15 @@ class Account(models.Model) :
     def __str__(self) :
         return str(self.twitter_id)
 
+class Category(models.Model) :
+    category = models.CharField('カテゴリ', max_length = 255)
+
+    def __str__(self) :
+        return str(self.category)
+
 class AccountCategory(models.Model) :
     account = models.ForeignKey(Account, on_delete = models.CASCADE)
-    category = models.CharField('カテゴリ', max_length = 255)
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
 
     def __str__(self) :
         return self.category
