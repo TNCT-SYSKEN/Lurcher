@@ -12,6 +12,13 @@ class Account(models.Model) :
     def __str__(self) :
         return str(self.twitter_id)
 
+class AccountCategory(models.Model) :
+    account = models.ForeignKey(Account, on_delete = models.CASCADE)
+    category = models.CharField('カテゴリ', max_length = 255)
+
+    def __str__(self) :
+        return self.category
+
 class OfflineParty(models.Model) :
     sponsor = models.ForeignKey(Account, on_delete = models.CASCADE)
     title = models.CharField('タイトル', max_length = 255)
