@@ -5,5 +5,6 @@ import django.contrib.auth.views as auth_views
 
 urlpatterns = [
     path('top/',views.top_page, name="top"), # リダイレクト
-    path('login/', auth_views.LoginView.as_view(), {'template_name': 'mainsite/login.html'}, name='login'),
+    path('login/', auth_views.LoginView.as_view(), {'template_name': 'registration/login.html'}, name='login'),
+    path('signup/', views.signup),
 ]
