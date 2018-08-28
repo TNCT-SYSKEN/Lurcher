@@ -7,13 +7,26 @@
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
     <link rel="stylesheet" href="{% static 'styles/add-settings.css' %}">
   </head>
 
   <body>
-    <h2>開催場所/開催日時</h2>
-    <p>開催場所</p>
-    <div id="type"></div>
+    <div class="container my-3">
+      <div class="white-box col-12 py-3">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="text-center text-md-left">開催場所/開催日時</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 form-group">
+            <label>開催場所</label>
+            <div id="type" class="border"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'scripts/add-settings.js' %}"></script>
