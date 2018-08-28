@@ -30,6 +30,7 @@ class OfflineParty(models.Model) :
     title = models.CharField('タイトル', max_length = 255)
     at_time = models.DateTimeField('開催日時', null = True, blank=True)
     capacity = models.IntegerField('募集人数')
+    category = models.ManyToManyField(Category)
     participant = models.ManyToManyField(Account, related_name='participant')
     location_lat = models.FloatField('緯度', null = True, blank=True)
     location_lng = models.FloatField('経度', null = True, blank=True)
