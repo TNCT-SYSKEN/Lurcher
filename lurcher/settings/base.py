@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'mainsite',
 ]
 
@@ -65,12 +66,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'lurcher.wsgi.application'
+
+LOGIN_URL = '/login/'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/signup/'
+SOCIAL_AUTH_TWITTER_KEY = '3wuvxJjBuBclWTxIHKtKx7I0H'
+SOCIAL_AUTH_TWITTER_SECRET = 'PKeZeVXOqfGOmd5WRuDfIy059sga0xt9SmHa5WzZjOrtHFdWUX'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 # Database
