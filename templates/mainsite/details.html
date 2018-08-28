@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
-	<head>
-		<meta charset="utf-8">
-		<title>Details</title>
-	</head>
-	<body>
+<head>
+	<meta charset="utf-8">
+	<title>Details</title>
+</head>
+<body>
+	{% if party %}
 		<h1>オフ会詳細</h1>
 		<div class="table-responsive">
 			<table class="table">
 				<tbody>
-					<!-- データはダミー -->
 					<tr>
 						<th>名称</th>
-						<th>代々木ピクニックオフ</th>
+						<th>{{ party.title }}</th>
+					</tr>
+					<tr>
+						<th>主催者</th>
+						<th>{{ party.sponser.twitter_id }}</th> <!-- API 使って screen_name とかをとってきたい -->
 					</tr>
 					<tr>
 						<th>開催地</th>
-						<td>日本東京都江戸川区○○1-23-4</td>
+						<td>{{ party.location_lat }}</td> <!-- なんとかしましょう -->
 					</tr>
 					<tr>
 						<th>日時</th>
-						<td>2018年1月91日7時から</td>
+						<td>{{ party.at_time}}</td>
 					</tr>
 					<tr>
 						<th>カテゴリ</th>
@@ -28,7 +32,7 @@
 					</tr>
 					<tr>
 						<th>募集人数</th>
-						<td>12人まで</td>
+						<td>{{ party.capacity }}</td>
 					</tr>
 					<tr>
 						<th>参加者名</th>
@@ -36,11 +40,14 @@
 					</tr>
 					<tr>
 						<th>備考</th>
-						<td>素材として利用するため，各自空き瓶を持参してください．</td>
+						<td>{{ party.comment }}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<p><ここにマップが入る></p>
-	</body>
+		<p><ここにマップが入る></p>	
+	{% else %}
+		<p>オフ会が存在しません．</p>
+	{% endif %}
+</body>
 </html>
