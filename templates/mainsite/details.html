@@ -73,6 +73,11 @@
 			}
 		).addTo(map);
 
+		var marker = L.marker([{{party.location_lat}}, {{party.location_lng}}], { 'draggable': 'true' }).addTo(map);
+		marker.on('moveend', function () {
+			console.log(marker.getLatLng());
+		});
+
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if (this.readyState==4 && this.status==200) {
