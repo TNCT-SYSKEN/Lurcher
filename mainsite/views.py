@@ -3,4 +3,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def create(request):
-    return render(request, 'mainsite/asobi.html')
+    return render(request, 'mainsite/add-settings.html')
