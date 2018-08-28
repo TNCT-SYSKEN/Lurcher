@@ -35,3 +35,13 @@ class OfflineParty(models.Model) :
     recruitment_start = models.DateField('募集開始')
     recruitment_end = models.DateField('募集終了')
     comment = models.TextField('コメント')
+
+    def __str__(self) :
+        return self.title
+
+class JoiningOfflineParty(models.Model) :
+    account = models.ForeignKey(Account, on_delete = models.CASCADE)
+    party = models.ForeignKey(OfflineParty, on_delete = models.CASCADE)
+
+    def __str__(self) :
+        return str(self.account) + ': ' + str(self.party)
