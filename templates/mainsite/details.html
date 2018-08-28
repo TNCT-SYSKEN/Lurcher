@@ -3,6 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Details</title>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}"></script>
 </head>
 <body>
 	{% if party %}
@@ -20,7 +24,7 @@
 					</tr>
 					<tr>
 						<th>開催地</th>
-						<td>{{ party.location_lat }}</td> <!-- なんとかしましょう -->
+						<td id="address"></td> <!-- なんとかしましょう -->
 					</tr>
 					<tr>
 						<th>日時</th>
@@ -45,9 +49,35 @@
 				</tbody>
 			</table>
 		</div>
-		<p><ここにマップが入る></p>	
+		<div id="details-map"></div>
+
 	{% else %}
 		<p>オフ会が存在しません．</p>
 	{% endif %}
+
+	<script type="text/javascript">
+		var map = L.map('details-map').setView([{{party.location_lat}}, {{party.location_lng}}], 14);
+
+		//OSMレイヤー追加
+		L.tileLayer(
+			'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			{
+				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+				maxZoom: 18
+			}
+		).addTo(map);
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if (this.readyState==4 && this.status==200) {
+				var address_td = document.getElementById('address');
+				address_td.innerHTML = this.response.address.state + ", " + this.response.address.city;
+				console.log(this.response.address)
+			}
+		};
+		xhr.responseType = 'json';
+		xhr.open('GET', 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+{{party.location_lat}}+'&lon='+{{party.location_lng}}, true);
+		xhr.send();
+	</script>
 </body>
 </html>
