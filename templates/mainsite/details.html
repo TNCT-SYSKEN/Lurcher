@@ -1,14 +1,17 @@
+{% extends './common-frame.html' %}
+
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
 <head>
-	<meta charset="utf-8">
 	<title>Details</title>
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}"></script>
+	{% block styles %}
+	<link rel="stylesheet" href="{% static 'styles/details.css' %}">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	{% endblock %}
 </head>
 <body>
+	{% block main %}
 	{% if party %}
 		<h1>オフ会詳細</h1>
 		<div class="table-responsive">
@@ -54,7 +57,10 @@
 	{% else %}
 		<p>オフ会が存在しません．</p>
 	{% endif %}
+	{% endblock %}
 
+	{% block scripts %}
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<script type="text/javascript">
 		var map = L.map('details-map').setView([{{party.location_lat}}, {{party.location_lng}}], 14);
 
@@ -79,5 +85,6 @@
 		xhr.open('GET', 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+{{party.location_lat}}+'&lon='+{{party.location_lng}}, true);
 		xhr.send();
 	</script>
+	{% endblock %}
 </body>
 </html>
