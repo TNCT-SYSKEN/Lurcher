@@ -27,8 +27,6 @@ def details(request):
 	participants_str = ""
 	for participant in participants:
 		participants_str += api.get_user(user_id=participant.twitter_id).screen_name + " "
-		if len(participants_str) >= 15: #マジックナンバーをなんとかしたい
-			break
 
 	template = loader.get_template('mainsite/details.html')
 	context = {
