@@ -10,8 +10,4 @@ urlpatterns = [
     path('home/',views.home, name='return_to_home')
     #home/でviewsの中のhomeという関数を呼び出し、
     #ホームのページに戻そうと思っているので調整をお願いします
-]
-=======
-    path('create', views.create, name = 'create')
-]
->>>>>>> [add] mainsiteアプリのcreateビューまでのルーティングを設定
+]]
