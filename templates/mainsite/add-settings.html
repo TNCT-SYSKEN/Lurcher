@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/add-settings.css' %}">
+  </head>
+
+  <body>
+    <div class="container my-3">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-auto">
+          <div class="col-12 white-box py-3">
+            <div class="row">
+              <div class="col-12">
+                <h1 class="text-center">開催場所/開催日時</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <form action="">
+                  <div class="form-group">
+                    <label>開催場所</label>
+                    <div id="type" class="border"></div>
+                  </div>
+                  <div class="form-group">
+                    <label>開催日時</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="hold-date">日付</span>
+                      </div>
+                      <input class="form-control" type="date" aria-describedby="hold-date" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="hold-time">時間</span>
+                        </div>
+                        <input class="form-control" type="time" aria-describedby="hold-time" required>
+                      </div>
+                  </div>
+                  <button class="btn btn-primary" type="submit">送信</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="{% static 'scripts/add-settings.js' %}"></script>
+  </body>
+</html>
