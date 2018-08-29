@@ -15,6 +15,7 @@ def details(request):
 
 	sponsor_account = api.get_user(user_id=party.sponsor.twitter_id)
 	sponsor_name = sponsor_account.screen_name
+	sponsor_icon = sponsor_account.profile_image_url
 
 	categories = party.category.all()
 	categories_str = ""
@@ -35,5 +36,6 @@ def details(request):
 		'categories': categories_str,
 		'participants': participants_str,
 		'sponsor_name': sponsor_name,
+		'sponsor_icon': sponsor_icon,
 	}
 	return HttpResponse(template.render(context, request))
