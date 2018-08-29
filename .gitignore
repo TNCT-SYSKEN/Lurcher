@@ -94,4 +94,4 @@ typings/
 package-lock.json
 /static/
 
-db.sqlite3
+*.sqlite3
