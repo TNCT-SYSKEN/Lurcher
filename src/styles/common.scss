@@ -1,0 +1,21 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "variables";
+
+body {
+    background-color: $color-lurcher-back;
+}
+
+h1 {
+    color: $color-lurcher-main;
+    
+    @include media-breakpoint-only(xs) {
+        font-size: 1.8rem;
+    }
+}
+
+.white-box {
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
+}

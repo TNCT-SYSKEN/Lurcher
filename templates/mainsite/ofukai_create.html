@@ -1,14 +1,18 @@
+{% extends './common-frame.html' %}
+
 <!DOCTYPE HTML>
 <html>
 <head>
 </head>
   <body>
+    {% block main %}
     {% block content %}
     <form action="" method="POST">
     {{ form.as_p }}
     <button type="submit">送信</button>
     {% csrf_token %}
     </form>
+    {% endblock %}
     {% endblock %}
   </body>
 </html>
