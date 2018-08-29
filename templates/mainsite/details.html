@@ -35,15 +35,23 @@
 					</tr>
 					<tr>
 						<th>カテゴリ</th>
-						<td>{{ categories }}</td>
+						<td>
+							{% for c in categories %}
+								<button type="button" class="btn btn-default">{{ c }}</button>
+							{% endfor %}
+						</td>
 					</tr>
 					<tr>
 						<th>募集人数</th>
 						<td>{{ party.capacity }}</td>
 					</tr>
 					<tr>
-						<th>参加者名</th>
-						<td>{{ participants }}</td>
+						<th>参加者</th>
+						<td>
+							{% for p in participants %}
+								<img src="{{ p.1 }}" class="img-details-profile img-responsive"><span> {{ p.0 }}</span>
+							{% endfor %}
+						</td>
 					</tr>
 					<tr>
 						<th>備考</th>

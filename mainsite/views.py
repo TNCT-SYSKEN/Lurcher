@@ -18,21 +18,17 @@ def details(request):
 	sponsor_icon = sponsor_account.profile_image_url
 
 	categories = party.category.all()
-	categories_str = ""
-
-	for category in categories:
-		categories_str += str(category) + " "
 
 	participants = party.participant.all()
-	participants_str = ""
+	participants_formatted = list()
 	for participant in participants:
-		participants_str += api.get_user(user_id=participant.twitter_id).screen_name + " "
+		participants_formatted.append((api.get_user(user_id=participant.twitter_id).screen_name, api.get_user(user_id=participant.twitter_id).profile_image_url))
 
 	template = loader.get_template('mainsite/details.html')
 	context = {
 		'party': party,
-		'categories': categories_str,
-		'participants': participants_str,
+		'categories': categories,
+		'participants': participants_formatted,
 		'sponsor_name': sponsor_name,
 		'sponsor_icon': sponsor_icon,
 	}
