@@ -4,9 +4,7 @@ from .models import OfflineParty
 class PageCreateForm(forms.ModelForm):
     class Meta:
         model = OfflineParty
-        fields = ['title','at_time','capacity','location_lat',
-        'location_lng','recruitment_start','recruitment_end',
-        'comment']
+        fields = ['title','at_time','capacity', 'recruitment_start','recruitment_end', 'comment']
 
     def __init__(self, *args, **kwargs) :
         super().__init__(*args, **kwargs)
