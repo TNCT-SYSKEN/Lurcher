@@ -14,7 +14,11 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <form action="">
+    <form action="" method="POST">
+      {% for field in form %}
+        {{ field.as_hidden }}
+      {% endfor %}
+
       <div class="form-group">
         <label>開催場所</label>
         <div id="type" class="border"></div>
@@ -35,6 +39,7 @@
           </div>
       </div>
       <button class="btn btn-primary" type="submit">送信</button>
+      {% csrf_token %}
     </form>
   </div>
 </div>
