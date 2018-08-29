@@ -93,3 +93,5 @@ typings/
 ### Project ###
 package-lock.json
 /static/
+
+db.sqlite3

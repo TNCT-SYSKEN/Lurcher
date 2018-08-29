@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+      <h1>送信が完了しました！</h1>
+  <body>
+    <!--urlsでapp_name=lurcherと定義した場合 違うならhoge:homeです。
+    もしかするとここでエラーが出る可能性があります
+  -->
+      <form action="{% url lurcher:home %}">
+        {% csrf_token %}
+        <button type="submit">ホームに戻る</button>
+      </form>
+  </body>
+</html>
