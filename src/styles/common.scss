@@ -3,6 +3,10 @@
 @import "node_modules/bootstrap/scss/mixins";
 @import "variables";
 
+body {
+    background-color: $color-lurcher-back;
+}
+
 h1 {
     color: $color-lurcher-main;
     
