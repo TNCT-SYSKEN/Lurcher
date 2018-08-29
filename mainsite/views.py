@@ -6,8 +6,8 @@ import tweepy
 
 # Create your views here.
 
-def details(request):
-	party = OfflineParty.objects.get(id=2)
+def details(request, offline_party_id):
+	party = OfflineParty.objects.get(id=offline_party_id)
 
 	auth = tweepy.OAuthHandler('Consumer Token', 'Consumer Secret')
 	auth.set_access_token('Access Token', 'Access Secret')
