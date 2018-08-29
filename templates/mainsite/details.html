@@ -1,0 +1,95 @@
+{% extends './common-frame.html' %}
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+	<title>Details</title>
+	{% load static %}
+	{% block styles %}
+	<link rel="stylesheet" href="{% static 'styles/details.css' %}">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	{% endblock %}
+</head>
+<body>
+	{% block main %}
+	{% if party %}
+		<h1>オフ会詳細</h1>
+		<div class="table-responsive">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>名称</th>
+						<th>{{ party.title }}</th>
+					</tr>
+					<tr>
+						<th>主催者</th>
+						<th>{{ party.sponser.twitter_id }}</th> <!-- API 使って screen_name とかをとってきたい -->
+					</tr>
+					<tr>
+						<th>開催地</th>
+						<td id="address"></td>
+					</tr>
+					<tr>
+						<th>日時</th>
+						<td>{{ party.at_time}}</td>
+					</tr>
+					<tr>
+						<th>カテゴリ</th>
+						<td>政治・思想</td>
+					</tr>
+					<tr>
+						<th>募集人数</th>
+						<td>{{ party.capacity }}</td>
+					</tr>
+					<tr>
+						<th>参加者名</th>
+						<td>K.Mさん，F.Eさん，V.Lさん，J.V.Sさん，他7人</td>
+					</tr>
+					<tr>
+						<th>備考</th>
+						<td>{{ party.comment }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="details-map"></div>
+
+	{% else %}
+		<p>オフ会が存在しません．</p>
+	{% endif %}
+	{% endblock %}
+
+	{% block scripts %}
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<script type="text/javascript">
+		var map = L.map('details-map').setView([{{party.location_lat}}, {{party.location_lng}}], 14);
+
+		//OSMレイヤー追加
+		L.tileLayer(
+			'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			{
+				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+				maxZoom: 18
+			}
+		).addTo(map);
+
+		var marker = L.marker([{{party.location_lat}}, {{party.location_lng}}], { 'draggable': 'true' }).addTo(map);
+		marker.on('moveend', function () {
+			console.log(marker.getLatLng());
+		});
+
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if (this.readyState==4 && this.status==200) {
+				var address_td = document.getElementById('address');
+				address_td.innerHTML = this.response.address.state + ", " + this.response.address.city;
+				console.log(this.response.address)
+			}
+		};
+		xhr.responseType = 'json';
+		xhr.open('GET', 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+{{party.location_lat}}+'&lon='+{{party.location_lng}}, true);
+		xhr.send();
+	</script>
+	{% endblock %}
+</body>
+</html>
