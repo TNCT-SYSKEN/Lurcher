@@ -26,7 +26,7 @@ def add(request):
         form = form.save(commit = False)
         form.sponsor = account
         form.save()
-        return render(request,'mainsite/create_success.html')
+        return render(request,'mainsite/create-success.html')
 
     context = {
         'form': form
