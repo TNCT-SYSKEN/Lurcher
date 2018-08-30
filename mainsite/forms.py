@@ -7,7 +7,7 @@ class DateInput(forms.DateInput):
 class PageCreateForm(forms.ModelForm):
     class Meta:
         model = OfflineParty
-        fields = ['title', 'capacity', 'recruitment_start','recruitment_end', 'comment']
+        fields = ['title', 'capacity', 'category', 'recruitment_start','recruitment_end', 'comment']
         widgets = {
             'recruitment_start': DateInput(),
             'recruitment_end': DateInput()
@@ -17,3 +17,8 @@ class PageCreateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs["class"] = "form-control"
+
+        attrs = {
+            'data-live-search': 'true',
+        }
+        self.fields['category'].widget.attrs.update(attrs)

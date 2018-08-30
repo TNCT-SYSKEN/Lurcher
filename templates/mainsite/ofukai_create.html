@@ -1,18 +1,24 @@
 {% extends './common-frame.html' %}
+{% load static %}
 
 {% block main %}
 <h1>オフ会の作成</h1>
 <form action="" method="POST">
   {% for field in form %}
   <div class="form-group">
-      {{ field.errors }}
-      {{ field.label_tag }} {{ field }}
-      {% if field.help_text %}
-      <p class="help">{{ field.help_text|safe }}</p>
-      {% endif %}
+    {{ field.errors }}
+    {{ field.label_tag }} {{ field }}
+    {% if field.help_text %}
+    <p class="help">{{ field.help_text|safe }}</p>
+    {% endif %}
   </div>
   {% endfor %}
   <button class="btn btn-primary" type="submit">送信</button>
 {% csrf_token %}
 </form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'scripts/create.jquery.js' %}"></script>
 {% endblock %}
