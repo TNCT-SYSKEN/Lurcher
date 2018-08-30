@@ -22,3 +22,9 @@ class PageCreateForm(forms.ModelForm):
             'data-live-search': 'true',
         }
         self.fields['category'].widget.attrs.update(attrs)
+from .models import Account
+
+class AccountForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['twitter_id', 'pref', 'category']
