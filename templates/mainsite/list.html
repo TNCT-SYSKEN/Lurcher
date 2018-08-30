@@ -1,0 +1,26 @@
+{% extends './common-frame.html' %}
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+	<title>Details</title>
+	{% load static %}
+	{% block styles %}
+	<link rel="stylesheet" href="{% static 'styles/details.css' %}">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	{% endblock %}
+</head>
+<body>
+	{% block main %}
+	<div class="table-responsive">
+		<table class="table">
+			<tbody>
+				{% for p in parties %}
+					<tr><td><a href="/details/{{ p.id }}">{{ p.title }}</a></td></tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% endblock %}
+</body>
+</html>

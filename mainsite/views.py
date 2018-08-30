@@ -135,6 +135,20 @@ def register(request, offline_party_id):
 	}
 	return HttpResponse(template.render(context, request))
 
+def list_page(request):
+    parties = []
+    categories = Account.objects.filter(id = request.user.id)[0].category.all()
+    for c in categories :
+        for p in OfflineParty.objects.all():
+            for cat in p.category.all():
+                if cat == c: parties.append(p)
+
+    context = {
+        "parties": parties
+    }
+    template = loader.get_template('mainsite/list.html')
+    return HttpResponse(template.render(context, request))
+
 class CategoryFilter(filters.FilterSet):
     category = filters.CharFilter(lookup_expr='contains')
     class Meta :
