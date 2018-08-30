@@ -13,9 +13,18 @@ import tweepy
 
 # Create your views here.
 
-def add(request):#オフ会作成ページ
+def add(request):
+    auth = tweepy.OAuthHandler('0nDoCPhIUgHeDtRXvMqnD6SaV', '9fTfhOSf87Atl8IBeCuRsuTJEBYCslF04fXA29aIfNmrGw2Za4')
+    auth.set_access_token('952539721632071685-j04mmvU8ajsmv7KNh6kgrsB0q3EMybv', '7KhjYivQQDtcCtoXZljyByLAiQNxfMIGypV0lEGcMCEKO')
+    api = tweepy.API(auth)
+
+    twitter_id = api.get_user(request.user).id
+    account = Account.objects.get(twitter_id = twitter_id)
     form = PageCreateForm(request.POST or None)
+
     if request.method == 'POST' and form.is_valid():
+        form = form.save(commit = False)
+        form.sponsor = account
         form.save()
         return render(request,'mainsite/form_success.html')
     #最初にこちらを通って、次にif文の中を通ります
