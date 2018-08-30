@@ -1,0 +1,23 @@
+{% extends './common-frame.html' %}
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+	<title>Details</title>
+	{% load static %}
+	{% block styles %}
+	<link rel="stylesheet" href="{% static 'styles/details.css' %}">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	{% endblock %}
+</head>
+<body>
+	{% block main %}
+	{% if party %}
+		<h1>オフ会参加</h1>
+		<p> {{ title }} に参加登録しました．</p>
+	{% else %}
+		<p>オフ会が存在しません．</p>
+	{% endif %}
+	{% endblock %}
+</body>
+</html>

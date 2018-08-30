@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from mainsite.models import OfflineParty
+from mainsite.models import Account
+
 import tweepy
 
 # Create your views here.
@@ -27,11 +29,26 @@ def details(request, offline_party_id):
 
 	template = loader.get_template('mainsite/details.html')
 	context = {
+		'id': str(offline_party_id),
 		'party': party,
 		'categories': categories,
 		'participants': participants_formatted,
 		'sponsor_name': sponsor_name,
 		'sponsor_screen_name': sponsor_screen_name,
 		'sponsor_icon': sponsor_icon,
+	}
+	return HttpResponse(template.render(context, request))
+
+def register(request, offline_party_id):
+	# 〆鯖先輩の進捗を回収し次第ログイン絡みを実装する．
+	party = OfflineParty.objects.get(id=offline_party_id)
+	template = loader.get_template('mainsite/register.html')
+
+	account = Account.objects.get(id=1)
+	party.participants.add(account)
+	
+	context = {
+		'party': party,
+		'title': party.title,
 	}
 	return HttpResponse(template.render(context, request))
