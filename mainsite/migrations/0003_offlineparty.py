@@ -24,6 +24,8 @@ class Migration(migrations.Migration):
                 ('recruitment_end', models.DateField(verbose_name='募集終了')),
                 ('comment', models.TextField(verbose_name='コメント')),
                 ('sponsor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='mainsite.Account')),
+                ('access_token', models.TextField(verbose_name='アクセストークン')),
+                ('access_token_secret', models.TextField(verbose_name='アクセストークンシークレット')),
             ],
         ),
     ]
