@@ -15,6 +15,8 @@ class Account(models.Model) :
     category = models.ManyToManyField(Category)
     evaluation = PositiveBigIntegerField('評価数', default = 0)
     held_count = PositiveBigIntegerField('開催数', default = 0)
+    access_token = models.CharField('アクセストークン', max_length = 512, default="")
+    access_token_secret = models.CharField('アクセストークンシークレット', max_length = 512, default="")
 
     def __str__(self) :
         return str(self.twitter_id)
@@ -31,8 +33,6 @@ class OfflineParty(models.Model) :
     recruitment_start = models.DateField('募集開始')
     recruitment_end = models.DateField('募集終了')
     comment = models.TextField('コメント')
-    access_token = models.TextField('アクセストークン', default = "")
-    access_token_secret = models.TextField('アクセストークンシークレット', default = "")
 
     def __str__(self) :
         return self.title
