@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<th>主催者</th>
-						<th>{{ party.sponser.twitter_id }}</th> <!-- API 使って screen_name とかをとってきたい -->
+						<th><a target="_blank" href="https://twitter.com/{{ sponsor_screen_name }}"><img src="{{ sponsor_icon }}" class="img-responsive"></a> {{ sponsor_name }} ( @{{sponsor_screen_name}} )</th>
 					</tr>
 					<tr>
 						<th>開催地</th>
@@ -31,19 +31,27 @@
 					</tr>
 					<tr>
 						<th>日時</th>
-						<td>{{ party.at_time}}</td>
+						<td>{{ party.at_time }}</td>
 					</tr>
 					<tr>
 						<th>カテゴリ</th>
-						<td>政治・思想</td>
+						<td>
+							{% for c in categories %}
+								<button type="button" class="btn btn-default">{{ c }}</button>
+							{% endfor %}
+						</td>
 					</tr>
 					<tr>
 						<th>募集人数</th>
 						<td>{{ party.capacity }}</td>
 					</tr>
 					<tr>
-						<th>参加者名</th>
-						<td>K.Mさん，F.Eさん，V.Lさん，J.V.Sさん，他7人</td>
+						<th>参加者</th>
+						<td>
+							{% for p in participants %}
+								<a target="_blank" href="https://twitter.com/{{ p.0 }}"><img title="@{{ p.0 }}" src="{{ p.1 }}" class="img-details-profile img-responsive"></a>
+							{% endfor %}
+						</td>
 					</tr>
 					<tr>
 						<th>備考</th>
@@ -51,6 +59,9 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="register-button">
+			<button type="button" class="btn btn-primary" onclick="location.href='/register/{{ id }}'">参加</button>
 		</div>
 		<div id="details-map"></div>
 
