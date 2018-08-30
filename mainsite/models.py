@@ -31,6 +31,8 @@ class OfflineParty(models.Model) :
     recruitment_start = models.DateField('募集開始')
     recruitment_end = models.DateField('募集終了')
     comment = models.TextField('コメント')
+    access_token = models.TextField('アクセストークン', default = "")
+    access_token_secret = models.TextField('アクセストークンシークレット', default = "")
 
     def __str__(self) :
         return self.title
