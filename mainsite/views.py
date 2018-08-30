@@ -29,7 +29,9 @@ def top_page(request):
         return redirect('/signup/')
 def signup(request) :
     user = UserSocialAuth.objects.get(user_id=request.user.id)
-    form = AccountForm(request.POST or None, initial={"twitter_id":user.access_token["user_id"]})
+    oauth_token = user.access_token["oauth_token"]
+    oauth_token_f = oauth_token[len(user.access_token["user_id"])+1:]
+    form = AccountForm(request.POST or None, initial={"twitter_id":user.access_token["user_id"], "access_token":oauth_token_f, "access_token_secret":user.access_token["oauth_token_secret"]})
     if request.method == 'POST' and form.is_valid():
         form.save()
         return render(request,'mainsite/top.html')
