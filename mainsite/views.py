@@ -5,13 +5,36 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from mainsite.models import Account, OfflineParty, Category
 from social_django.models import UserSocialAuth
-from .forms import AccountForm
 from rest_framework import viewsets, serializers
 from django_filters import rest_framework as filters
+
+from .models import Account, OfflineParty, Category
+from .forms import AccountForm, PageCreateForm
 
 import tweepy
 
 # Create your views here.
+
+def add(request):
+    auth = tweepy.OAuthHandler('0nDoCPhIUgHeDtRXvMqnD6SaV', '9fTfhOSf87Atl8IBeCuRsuTJEBYCslF04fXA29aIfNmrGw2Za4')
+    auth.set_access_token('952539721632071685-j04mmvU8ajsmv7KNh6kgrsB0q3EMybv', '7KhjYivQQDtcCtoXZljyByLAiQNxfMIGypV0lEGcMCEKO')
+    api = tweepy.API(auth)
+
+    twitter_id = api.get_user(request.user).id
+    account = Account.objects.get(twitter_id = twitter_id)
+    form = PageCreateForm(request.POST or None)
+
+    if request.method == 'POST' and form.is_valid():
+        form = form.save(commit = False)
+        form.sponsor = account
+        form.save()
+        return render(request,'mainsite/create-success.html')
+
+    context = {
+        'form': form
+    }
+    return render(request,'mainsite/create.html',context)
+
 def login(request) :
     return render(request, 'registration/login.html')
 
@@ -45,9 +68,6 @@ def signup(request) :
         'user': user,
     }
     return HttpResponse(template.render(context, request))
-
-
-# Create your views here.
 
 def details(request, offline_party_id):
 	party = OfflineParty.objects.get(id=offline_party_id)
