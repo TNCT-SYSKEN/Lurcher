@@ -1,3 +1,5 @@
+{% extends './common-frame.html' %}
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -8,6 +10,7 @@
     <title>Sign Up - Lurcher</title>
   </head>
   <body>
+    {% block main %}
     <h2>アカウント登録</h2>
     <!--<form action="" method="POST">{% csrf_token %}
       <p>Twitter ID : @{{ user.access_token.screen_name }}</p>
@@ -71,8 +74,10 @@
     <form method="post">
       {% csrf_token %}
       {{ form }}
-      <button type="submit">登録</button>
+      <button type="submit" class="btn btn-primary">登録</button>
     </form>
+    {% endblock %}
+    {% block scripts %}
     <script>
       {% autoescape off %}
         $(function() {
@@ -92,5 +97,6 @@
         }
       {% endautoescape %}
     </script>
+    {% endblock %}
   </body>
 </html>

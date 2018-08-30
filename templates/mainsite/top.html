@@ -1,17 +1,26 @@
+{% extends './common-frame.html' %}
+
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>Lurcher</title>
+    {% load static %}
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/top.css' %}">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    {% endblock %}
   </head>
   <body>
-    <table>
-      <tr><th>現在参加中のオフ会</th></tr>
-      {% for party in parties %}
+    {% block main %}
+    <p>
+      <table>
+        <tr><th>現在参加中のオフ会</th></tr>
+        {% for party in parties %}
         <tr><td>{{ party.title }}</td></tr>
-      {% endfor %}
-    </table>
-    <button type="button" onclick="location.href='/list'">オフ会に参加</button>
-    <button type="button" onclick="location.href='/offcreate'">オフ会を企画</button>
+        {% endfor %}
+      </table>
+    </p>
+    <button type="button" class="btn btn-primary" onclick="location.href='/list'">オフ会に参加</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='/offcreate'">オフ会を企画</button>
+    {% endblock %}
   </body>
 </html>
