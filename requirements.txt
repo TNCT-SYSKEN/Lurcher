@@ -2,3 +2,6 @@ Django==2.1
 pytz==2018.5
 requests-oauthlib==1.0.0
 social-auth-app-django==2.1.0
+tweepy==3.6.0
+djangorestframework==3.8.2
+django-filter==2.0.0
