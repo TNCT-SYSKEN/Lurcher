@@ -33,17 +33,14 @@ def add_settings(request, party_id) :
     return render(request, 'mainsite/add-settings.html', context)
 
 def add(request):
-    auth = tweepy.OAuthHandler('0nDoCPhIUgHeDtRXvMqnD6SaV', '9fTfhOSf87Atl8IBeCuRsuTJEBYCslF04fXA29aIfNmrGw2Za4')
-    auth.set_access_token('952539721632071685-j04mmvU8ajsmv7KNh6kgrsB0q3EMybv', '7KhjYivQQDtcCtoXZljyByLAiQNxfMIGypV0lEGcMCEKO')
-    api = tweepy.API(auth)
-
     account = Account.objects.get(id = request.user.id)
     form = PageCreateForm(request.POST or None)
 
     if request.method == 'POST' and form.is_valid():
-        form = form.save(commit = False)
-        form.sponsor = account
-        form.save()
+        form1 = form.save(commit = False)
+        form1.sponsor = account
+        form1.save()
+        form.save_m2m()
         return render(request,'mainsite/create-success.html')
 
     context = {

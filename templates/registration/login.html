@@ -1,12 +1,20 @@
+{% extends '../mainsite/common-frame.html' %}
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
     <title>Lurcher</title>
+    {% load static %}
+	{% block styles %}
+	<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+	{% endblock %}
   </head>
   <body>
+    {% block main %}
     <div>
-      <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterログイン</button>
+      <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'" class="btn btn-primary">Twitterログイン</button>
     </div>
+    {% endblock %}
   </body>
 </html>
