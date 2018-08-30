@@ -11,7 +11,6 @@ app_name = 'lurcher'
 
 urlpatterns = [
     path('offcreate',views.add, name='add'),
-    path('home/',views.home, name='return_to_home'),
     path('', auth_views.LoginView.as_view(), {'template_name': 'mainsite/login.html'}, name='login'),
     path('top/', views.top_page, name="top"),
     path('signup/', views.signup, name="signup"), # 叩かれることがない
