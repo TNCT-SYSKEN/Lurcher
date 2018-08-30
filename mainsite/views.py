@@ -39,7 +39,7 @@ def login(request) :
 
 @login_required
 def top_page(request):
-    if Account.objects.filter(twitter_id = request.user.id).count() == 1:
+    if Account.objects.filter(id = request.user.id).count() == 1:
         parties = OfflineParty.objects.all()
         user = UserSocialAuth.objects.get(user_id = request.user.id)
         template = loader.get_template('mainsite/top.html')

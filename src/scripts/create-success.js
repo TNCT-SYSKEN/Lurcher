@@ -1,3 +1,3 @@
 setInterval(function() {
-    window.location.href = ''
+    window.location.href = '/top'
 }, 3000)
