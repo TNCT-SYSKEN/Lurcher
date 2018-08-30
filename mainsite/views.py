@@ -20,8 +20,7 @@ def add(request):
     auth.set_access_token('952539721632071685-j04mmvU8ajsmv7KNh6kgrsB0q3EMybv', '7KhjYivQQDtcCtoXZljyByLAiQNxfMIGypV0lEGcMCEKO')
     api = tweepy.API(auth)
 
-    twitter_id = api.get_user(request.user).id
-    account = Account.objects.get(twitter_id = twitter_id)
+    account = Account.objects.get(id = request.user.id)
     form = PageCreateForm(request.POST or None)
 
     if request.method == 'POST' and form.is_valid():
