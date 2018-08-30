@@ -1,0 +1,42 @@
+{% extends './common-frame.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/create.css' %}">
+{% endblock %}
+
+{% block main %}
+<h1 class="text-center">オフ会の作成</h1>
+<form action="" method="POST">
+  {% for field in form %}
+  <div class="form-group">
+    {{ field.errors }}
+    <label class="{% for class in field.label_classes %} {{ class }} {% endfor %} bg-lurcher text-white rounded px-2" for="{{ field.name }}">{{ field.label }}</label>
+    {{ field }}
+    {% if field.help_text %}
+    <p class="help">{{ field.help_text|safe }}</p>
+    {% endif %}
+    {% if field == form.category %}
+      <div class="">
+        <label for="input-new-category"><small>新規カテゴリ追加</small></label>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" id="input-new-category" name="input-new-category" class="form-control" placeholder="カテゴリ名を入力">
+        <div class="input-group-append">
+          <button type="button" id="add-new-category" class="btn btn-success">追加</button>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">送信</button>
+  </div>
+{% csrf_token %}
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'scripts/create.jquery.js' %}"></script>
+{% endblock %}

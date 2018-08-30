@@ -1,0 +1,13 @@
+{% extends './common-frame.html' %}
+{% load static %}
+
+{% block main %}
+<div class="text-center">
+  <h2>作成が完了しました</h2>
+  <p>ホームページへ移動します</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'scripts/create-success.js' %}"></script>
+{% endblock %}
