@@ -10,9 +10,8 @@ var marker = L.marker([35.710063, 139.8107], { 'draggable': 'true' }).addTo(map)
 var popup = L.popup();
 var content = '<div class="text-center"><p>ここで確定しますか？</p><button id="set-latlng" class="btn btn-primary" type="button">確定</button></div>'
 
-function onMarker2Click(e) {
+marker.on('click', function() {
     popup.setLatLng(marker.getLatLng())
         .setContent(content)
-        .openOn(map);
-}
-map.on('click', onMarker2Click);
+        .openOn(map)
+})
