@@ -10,6 +10,7 @@ router.register(r'categories', views.CategoryList)
 app_name = 'lurcher'
 
 urlpatterns = [
+    path('create/<int:party_id>', views.add_settings, name='add_settings')
     path('offcreate',views.add, name='add'),
     path('', auth_views.LoginView.as_view(), {'template_name': 'mainsite/login.html'}, name='login'),
     path('top/', views.top_page, name="top"),

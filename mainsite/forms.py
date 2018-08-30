@@ -1,6 +1,11 @@
 from django import forms
 from .models import Account, OfflineParty
 
+class AddSettingsForm(forms.ModelForm):
+    class Meta:
+        model = OfflineParty
+        fields = ['location_lat', 'location_lng', 'at_time']
+
 class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
