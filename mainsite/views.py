@@ -45,8 +45,8 @@ def register(request, offline_party_id):
 	template = loader.get_template('mainsite/register.html')
 
 	account = Account.objects.get(id=1)
-	party.participants.add(account)
-	
+	party.participant.add(account)
+
 	context = {
 		'party': party,
 		'title': party.title,

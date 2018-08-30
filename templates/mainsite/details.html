@@ -23,7 +23,7 @@
 					</tr>
 					<tr>
 						<th>主催者</th>
-						<th><a target="_blank" href="https://twitter.com/{{ sponsor_screen_name }}"><img src="{{ sponsor_icon }}" class="img-responsive"></a> {{ sponsor_name }} ( {{sponsor_screen_name}} )</th>
+						<th><a target="_blank" href="https://twitter.com/{{ sponsor_screen_name }}"><img src="{{ sponsor_icon }}" class="img-responsive"></a> {{ sponsor_name }} ( @{{sponsor_screen_name}} )</th>
 					</tr>
 					<tr>
 						<th>開催地</th>
@@ -49,7 +49,7 @@
 						<th>参加者</th>
 						<td>
 							{% for p in participants %}
-								<img src="{{ p.1 }}" class="img-details-profile img-responsive"><span> {{ p.0 }}</span>
+								<a target="_blank" href="https://twitter.com/{{ p.0 }}"><img title="@{{ p.0 }}" src="{{ p.1 }}" class="img-details-profile img-responsive"></a>
 							{% endfor %}
 						</td>
 					</tr>
