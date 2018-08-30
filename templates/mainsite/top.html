@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Lurcher</title>
+  </head>
+  <body>
+    <table>
+      <tr><th>現在参加中のオフ会</th></tr>
+      {% for party in parties %}
+        <tr><td>{{ party.title }}</td></tr>
+      {% endfor %}
+    </table>
+    <button type="button">オフ会に参加</button>
+    <button type="button">オフ会を企画</button>
+  </body>
+</html>
