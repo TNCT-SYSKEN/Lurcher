@@ -6,6 +6,7 @@ $(function() {
         let latlng = marker.getLatLng()
         $('input:hidden[name="location_lat"]').val(latlng.lat)
         $('input:hidden[name="location_lng"]').val(latlng.lng)
+        $('input:text[name="location-status"]').val('設定済み')
     })
 
     /** 開催日時 **/

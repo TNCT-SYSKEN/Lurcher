@@ -18,10 +18,20 @@
       {% for field in form %}
         {{ field.as_hidden }}
       {% endfor %}
-
+      {% if location_undefined %}
+      <div class="alert alert-danger" role="alert">
+        <strong>エラー</strong><span class="pl-2">座標が入力されていません</span>
+      </div>
+      {% endif %}
       <div class="form-group">
         <label>開催場所</label>
-        <div id="type" class="border"></div>
+        <div id="type" class="border mb-3"></div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="location-status">状態</span>
+          </div>
+          <input class="form-control" type="text" name="location-status" aria-describedby="location-status" value="未設定" readonly>
+        </div>
       </div>
       <div class="form-group">
         <label>開催日時</label>
