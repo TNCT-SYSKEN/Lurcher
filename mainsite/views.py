@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -21,11 +21,11 @@ def top_page(request):
         }
         return HttpResponse(template.render(context, request))
     else: # ここもうちょっとマシな実装したい
-        user_id = request.user.id
-        template = loader.get_template('mainsite/signup.html')
-        context = {
-            'user_id': user_id,
-        }
-        return HttpResponse(template.render(context, request))
+        return redirect('/signup/')
 def signup(request) : # 現在特に役割がない
-    return render(request, 'mainsite/signup.html')
+    user_id = request.user.id
+    template = loader.get_template('mainsite/signup.html')
+    context = {
+        'user_id': user_id,
+    }
+    return HttpResponse(template.render(context, request))
