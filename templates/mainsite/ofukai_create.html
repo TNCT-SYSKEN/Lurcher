@@ -1,19 +1,37 @@
 {% extends './common-frame.html' %}
 {% load static %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/create.css' %}">
+{% endblock %}
+
 {% block main %}
-<h1>オフ会の作成</h1>
+<h1 class="text-center">オフ会の作成</h1>
 <form action="" method="POST">
   {% for field in form %}
   <div class="form-group">
     {{ field.errors }}
-    {{ field.label_tag }} {{ field }}
+    <label class="{% for class in field.label_classes %} {{ class }} {% endfor %} bg-lurcher text-white rounded px-2" for="{{ field.name }}">{{ field.label }}</label>
+    {{ field }}
     {% if field.help_text %}
     <p class="help">{{ field.help_text|safe }}</p>
     {% endif %}
+    {% if field == form.category %}
+      <div class="">
+        <label for="input-new-category"><small>新規カテゴリ追加</small></label>
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="カテゴリ名を入力">
+        <div class="input-group-append">
+          <button type="button" id="input-new-category" class="btn btn-success">追加</button>
+        </div>
+      </div>
+    {% endif %}
   </div>
   {% endfor %}
-  <button class="btn btn-primary" type="submit">送信</button>
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">送信</button>
+  </div>
 {% csrf_token %}
 </form>
 {% endblock %}
