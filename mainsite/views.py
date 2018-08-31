@@ -138,7 +138,7 @@ def register(request, offline_party_id):
 			friendship = api.show_friendship(source_id=account.twitter_id, target_id=a.twitter_id)[0]
 			if friendship.following and friendship.followed_by:
 				# カテゴリ・Twitter での FF が両方達成されていれば DM を送る．認証部分ができ次第ここを書き改めます
-				api.send_direct_message(user_id=str(a.twitter_id), text=str("「" + party.title + "」に申し込みました．あなたも参加してみませんか？ localhost:8000/details/" + str(party.id)))
+				api.send_direct_message(user_id=str(a.twitter_id), text=str("「" + party.title + "」に申し込みました．あなたも参加してみませんか？ http://localhost:8000/details/" + str(party.id)))
 				print("FF " + api.get_user(user_id=a.twitter_id).screen_name + " " + api.get_user(user_id=account.twitter_id).screen_name)
 
 
